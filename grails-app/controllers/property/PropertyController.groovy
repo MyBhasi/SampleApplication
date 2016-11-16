@@ -7,7 +7,6 @@ import com.sample_application.PropertyService
 import com.sample_application.RegistrationService
 import com.sample_application.User
 import com.sample_application.home.Home
-import com.sample_application.myuser.MyUser
 import com.sample_application.office.Office
 import com.sample_application.property.Property
 import grails.plugin.springsecurity.SpringSecurityService
@@ -19,7 +18,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest
 class PropertyController {
     PropertyService propertyService
     SpringSecurityService springSecurityService
-    int propertyID
+   static int propertyID
+    static int propertyID1
 
     def index() {
 
@@ -173,12 +173,13 @@ class PropertyController {
     def editOfficeProperty() {
         println "inoffice"
         int id = params.int('id')
-        propertyID=id
-        println id
+        println "in ditOfficeProperty"
+      propertyID1=id
+        println propertyID1
         Office property = Property.findById(id) as Office
         OfficeCO officeCO = new OfficeCO(address: property.address,pincode: property.pincode
                 ,city: property.city,price: property.price ,size: property.size,floorNo: property.floorNo,propertyFor:property.propertyFor,cafeteriaAvailibility: (property.cafeteriaAvailability=='true'?'Yes':'No') ,parkingFacility:(property.parkingFacility=='true'?'yes':'No'))
-        render view: "edit", model: [officeCO: officeCO,id:id]
+        render view: "edit", model: [officeCO: officeCO]
     }
 
     @Secured(['ROLE_OWNER', 'ROLE_AGENT'])
@@ -196,39 +197,40 @@ class PropertyController {
     def updateHome(HomeCO homeCO) {
 
 println "i m  bhaskar"
-        println propertyID
+//        println propertyID
         if (homeCO.validate()) {
             println " i m  validate"
             MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request;
             def file = mpr.getFile('image')
             propertyService.updateHome(homeCO, file,propertyID)
-            render(view: "/property/postedProperty", model: [sucess: "you  have sucessfully updated property"])
+            render(view: "postedProperty", model: [sucess: "you  have sucessfully updated property"])
 
         } else {
             homeCO.errors.allErrors.each { err ->
                 println "${err}"
             }
-            render(view: "/property/edit", model: [homeCO: homeCO])
+            render(view: "edit", model: [homeCO: homeCO])
         }
 
     }
 
     @Secured(['ROLE_OWNER', 'ROLE_AGENT'])
     def updateOffice(OfficeCO officeCO) {
-println propertyID
+//println propertyID
 //        println Property.findById(id).city
         if (officeCO.validate()) {
             println " i m  validate"
+            println propertyID1
             MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request;
             MultipartFile file = mpr.getFile('image')
-            propertyService.updateOffice(officeCO, file,propertyID)
-            render(view: "/posted/property", model: [sucess: "you  have sucessfully submitted property"])
-
+            propertyService.updateOffice(officeCO,file,propertyID1)
+            println "back in controller"
+           render (view:"postedProperty",model: [sucess: "you have sucessfully updated "])
         } else {
             officeCO.errors.allErrors.each { err ->
                 println "${err}"
             }
-            render(view: "/property/edit", model: [officeCO: officeCO])
+            render(view: "edit", model: [officeCO:officeCO])
         }
 
 

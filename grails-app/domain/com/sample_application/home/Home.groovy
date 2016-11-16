@@ -9,12 +9,15 @@ class Home extends Property {
     String bedRoom
 
     int floorNo
-        //    Set<String>amenties
+    //    Set<String>amenties
     boolean parkingFacilty
-Facing facing
+    Facing facing
     static constraints = {
         bedRoom blank: false
-        size blank:false
+        parkingFacilty blank: false
+        facing blank: false
+
+
     }
     static mapping = {
         discriminator("Home")

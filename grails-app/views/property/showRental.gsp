@@ -147,6 +147,7 @@
 
                                                 <h1>Location:${lt.address},${lt.city},${lt.pincode}</h1>
 
+
                                                 <h1>Contact:
                                                     <myNamespace:user name="${lt.postedBy}">
                                                         (${it}

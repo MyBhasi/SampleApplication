@@ -197,7 +197,6 @@
                             </div>
                         </g:form>
 
-
                     </div>
 
                     <div class="row">
@@ -209,6 +208,8 @@
                                             <!-- start properties content head -->
                                             %{--<--}%
                                             <!-- Start properties content body -->
+
+
                                             <div class="aa-properties-content-body">
                                                 <ul class="aa-properties-nav">
                                                     <li>
@@ -265,11 +266,10 @@
                                                                             <br>
 
                                                                         </div>
-                                                                    <img style="height:210px;width:354px;"
-                                                                         src="${createLink(controller: "dashboard", action: "renderImage", params: [id: "${lt.id}"])}"/>
+                                                                        <img style="height:210px;width:354px;"
+                                                                             src="${createLink(controller: "dashboard", action: "renderImage", params: [id: "${lt.id}"])}"/>
 
-
-                                                                </div><!-- /example -->
+                                                                    </div><!-- /example -->
                                                                 %{--</div>--}%
                                                                 %{--</div>--}%
                                                                 </div>

@@ -55,7 +55,7 @@
     <div class="form group" data-toggle="buttons">
         <label>ParkingFacility</label><br><g:select name="parkingFacility"
                                                     from="${['yes','No']}"
-                                                    noSelection="['': 'choose']" value="${homeCO.parkingFacility}"/>
+                                                    noSelection="['': 'choose']" value="${homeCO?.parkingFacility}"/>
     <g:hasErrors field="parkingFacility"  bean="${homeCO}">
         <g:fieldError field="parkingFacility" bean="${homeCO}"></g:fieldError>
     </g:hasErrors>
@@ -101,9 +101,10 @@
 %{--<input type="submit" value="upload" name="upload">--}%
 %{--</g:uploadForm>--}%
 
-
     <div class="form-group">
-        <g:actionSubmit class="btn btn-primary"   action="updateHome"  value="update" ></g:actionSubmit>
+
+        <g:actionSubmit class="btn btn-primary"   action="updateHome"  value="submit" ></g:actionSubmit>
+
         %{--<input type="submit"  style="width: 100px" value="Register">--}%
         %{--<button type="submit" class="btn btn-primary" >Submit</button>--}%
     </div>

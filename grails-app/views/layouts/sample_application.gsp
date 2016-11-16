@@ -218,7 +218,9 @@
                         </ul>
                     </li>
                     <li>
+                        <sec:ifLoggedIn>
                         <a href="${createLink(controller: "property", action: "postedProperty")}">PostedProperty</a>
+                        </sec:ifLoggedIn>
                     </li>
 
                     <sec:ifLoggedIn>

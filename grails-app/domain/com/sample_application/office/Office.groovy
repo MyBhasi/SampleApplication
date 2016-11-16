@@ -7,12 +7,13 @@ import dashboard.DashboardController
 class Office extends Property {
 
     Date dateCreated
- int floorNo
-     boolean parkingFacility
+    int floorNo
+    boolean parkingFacility
     boolean cafeteriaAvailability
 
     static constraints = {
-        parkingFacility  blank: false
+        parkingFacility blank: false
+        cafeteriaAvailability blank: false
 
     }
 

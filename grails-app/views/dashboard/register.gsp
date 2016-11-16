@@ -15,9 +15,6 @@
 
 <body>
 
-
-
-
 <section id="aa-signin">
     <div class="container">
         <div class="row">
@@ -31,25 +28,26 @@
                         <g:form class="contactform" controller="dashboard" action="save">
                             <div class="aa-single-field">
                                 <label>FirstName <span class="required">*</span></label>
-                                <input type="text" required="required"  value="${userCO?.firstName}" aria-required="true" name="firstName">
-                                <g:hasErrors  bean="${userCO}"  field="firstName">
+                                <input type="text" required="required" value="${userCO?.firstName}" aria-required="true"
+                                       name="firstName">
+                                <g:hasErrors bean="${userCO}" field="firstName">
                                     <g:fieldError field="firstName" bean="${userCO}"></g:fieldError>
-                                    %{--<g:message  code="User.firstName.blank"></g:message>--}%
+                                %{--<g:message  code="User.firstName.blank"></g:message>--}%
                                 </g:hasErrors>
                             </div>
 
                             <div class="aa-single-field">
                                 <label>LastName <span class="required">*</span></label>
-                                <input type="text" value="${userCO?.lastName}"name="lastName">
-                                <g:hasErrors  bean="${userCO}"  field="lastName">
-                                    <g:fieldError field="lastName" bean="${userCO}"  ></g:fieldError>
-                                    %{--<g:message code="User.lastName.blank"></g:message>--}%
+                                <input type="text" value="${userCO?.lastName}" name="lastName">
+                                <g:hasErrors bean="${userCO}" field="lastName">
+                                    <g:fieldError field="lastName" bean="${userCO}"></g:fieldError>
+                                %{--<g:message code="User.lastName.blank"></g:message>--}%
                                 </g:hasErrors>
                             </div>
 
                             <div class="aa-single-field">
                                 <label>Phone Number<span class="required">*</span></label>
-                                <input type="text" value="${userCO?.phoneNo}"name="phoneNo">
+                                <input type="text" value="${userCO?.phoneNo}" name="phoneNo">
                                 <g:hasErrors bean="${userCO}" field="phoneNo">
                                     <g:fieldError bean="${userCO}" field="phoneNo"></g:fieldError>
                                 </g:hasErrors>
@@ -60,7 +58,7 @@
                                 <input type="email" required="required" value="${userCO?.username}" name="username">
                                 <g:hasErrors bean="${userCO}" field="username">
 
-                                <g:fieldError bean="${userCO}"  field="username"></g:fieldError>
+                                    <g:fieldError bean="${userCO}" field="username"></g:fieldError>
                                 </g:hasErrors>
                             </div>
 
@@ -69,10 +67,10 @@
                                 <label>Password <span class="required">*</span></label>
                                 <input type="password" name="password">
                                 <g:hasErrors bean="${userCO}" field="password">
-                                <g:renderErrors bean="${userCO}" field="password" as="list" >
-                                </g:renderErrors>
-                                    %{--<g:fieldError bean="${userCO}" field="password">--}%
-                                    %{--</g:fieldError>--}%
+                                    <g:renderErrors bean="${userCO}" field="password" as="list">
+                                    </g:renderErrors>
+                                %{--<g:fieldError bean="${userCO}" field="password">--}%
+                                %{--</g:fieldError>--}%
                                 </g:hasErrors>
                             </div>
 
@@ -102,7 +100,7 @@
                 </div>
             </div>
         </div>
-
+</div>
 </section>
 
 

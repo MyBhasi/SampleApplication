@@ -3,7 +3,6 @@ package sample_application
 import com.sample_application.Role
 import com.sample_application.User
 import com.sample_application.UserRole
-import com.sample_application.myuser.MyUser
 import com.sample_application.property.Property
 import grails.plugin.springsecurity.SpringSecurityService
 
@@ -31,7 +30,7 @@ class Sample_ApplicationTagLib {
     }
 
     def post = { attr, body ->
-       def a= attr.userID  as Long
+        def a = attr.userID as Long
         println a
         println a.class
         User user = User.get(a)
@@ -40,5 +39,18 @@ class Sample_ApplicationTagLib {
         out << render(template: '/user/template1', model: [set: set])
 
     }
+//    def postProp =
+//            { attr, body ->
+//                def a = attr.userID as Long
+//                User user = User.get(a)
+//                String s = user.authorities.authority
+//                println s
+//                if (s.equals('ROLE_OWNER') && ('ROLE_AGENT')) {
+//
+//
+//                }
+//
+//
+//            }
 
 }

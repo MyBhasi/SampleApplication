@@ -47,7 +47,7 @@
                     <g:render template="template3"  model="[id:id,officeCO:officeCO]"></g:render>
                     </g:if>
 <g:if test="${homeCO?.class==com.home.HomeCO}">
-                    <g:render template="template2" model="[id: id,homeCO:homeCO]"></g:render>
+                    <g:render template="template2" model="[id: id, homeCO: homeCO]"></g:render>
     </g:if>
 
                 %{--<g:if test="${error}">--}%
