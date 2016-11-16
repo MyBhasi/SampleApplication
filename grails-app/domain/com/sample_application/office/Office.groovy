@@ -5,9 +5,15 @@ import com.sample_application.property.Property
 import dashboard.DashboardController
 
 class Office extends Property {
-    int size
+
     Date dateCreated
+ int floorNo
+     boolean parkingFacility
+    boolean cafeteriaAvailability
+
     static constraints = {
+        parkingFacility  blank: false
+
     }
 
     static mapping = {

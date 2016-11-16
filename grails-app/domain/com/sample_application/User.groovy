@@ -9,10 +9,14 @@ import groovy.transform.ToString
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
 class User implements Serializable {
-
+	String firstName
+	String lastName
+	String phoneNo
+	boolean admin
 	private static final long serialVersionUID = 1
 
 	transient springSecurityService
+	static hasMany = [property: Property]
 
 	String username
 	String password
@@ -50,6 +54,12 @@ class User implements Serializable {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+		firstName blank: false
+		lastName blank: false
+		admin null: true
+		phoneNo nullable: true, maxSize: 10, minSize: 10, blank:false, matches: "[0-9]+"
+
+
 	}
 
 	static mapping = {

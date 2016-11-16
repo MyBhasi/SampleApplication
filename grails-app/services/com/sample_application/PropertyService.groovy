@@ -1,5 +1,7 @@
 package com.sample_application
 
+import com.home.HomeCO
+import com.officeCO.OfficeCO
 import com.property.PropertyCO
 import com.sample_application.home.Home
 import com.sample_application.myuser.MyUser
@@ -48,7 +50,7 @@ class PropertyService {
         }
 
 
-        MyUser myUser = springSecurityService.currentUser
+        User myUser = springSecurityService.currentUser
         println "property service"
         println propertyCO.city
         if (propertyCO.propertyType == "Residential") {
@@ -89,6 +91,76 @@ class PropertyService {
             return list
         }
 
+
+    }
+
+    def saveHome(HomeCO homeCO, MultipartFile file)
+    {
+        String m;
+
+        if (!file.isEmpty()) {
+            m = "/home/anuj/project/photo/"
+            m = m + file.getOriginalFilename()
+            file.transferTo(new File(m))
+        }
+        User myUser = springSecurityService.currentUser
+        println "property service"
+
+        Property property1=new Home(address: homeCO.address,pincode: homeCO.pincode as int
+                ,city: homeCO.city,price: homeCO.price as long,imageLocation: m,postedBy: myUser,bedRoom: homeCO.bedRoom,size: homeCO.size,floorNo: homeCO.floorNo,facing: homeCO.facing,propertyFor: homeCO.propertyFor,parkingFacilty:homeCO.parkingFacility=='yes'?true:false ).save(failOnError: true)
+
+
+    }
+    def saveOffice(OfficeCO  officeCO, MultipartFile file)
+    {
+        String m;
+
+        if (!file.isEmpty()) {
+            m = "/home/anuj/project/photo/"
+            m = m + file.getOriginalFilename()
+            file.transferTo(new File(m))
+        }
+        User myUser = springSecurityService.currentUser
+        println "property service"
+
+        Property property1=new Office(address: officeCO.address,pincode: officeCO.pincode as int
+                ,city: officeCO.city,price: officeCO.price as long,imageLocation: m,postedBy: myUser,size: officeCO.size,floorNo: officeCO.floorNo,propertyFor:officeCO.propertyFor,parkingFacilty:officeCO.parkingFacility=='yes'?true:false,cafeteriaAvailability: officeCO.cafeteriaAvailibility=='yes'?true:false ).save(failOnError: true)
+
+
+    }
+
+
+    def updateHome(HomeCO homeCO,MultipartFile file,int propertyID)
+    {
+        String m;
+
+        if (!file.isEmpty()) {
+            m = "/home/anuj/project/photo/"
+            m = m + file.getOriginalFilename()
+            file.transferTo(new File(m))
+        }
+        User myUser = springSecurityService.currentUser
+        println "property update service"
+      Home property1=Property.findById(propertyID) as Home
+        property1.address=homeCO.address
+        property1.city=homeCO.city
+        property1.imageLocation=m
+        property1.pincode=homeCO.pincode
+        property1.postedBy=springSecurityService.currentUser
+        property1.price=homeCO.price as long
+        property1.size=homeCO.size as int
+        property1.bedRoom=homeCO.bedRoom
+        property1.facing=homeCO.facing
+        property1.parkingFacilty=homeCO.parkingFacility=='yes'?true:false
+        property1.propertyFor=homeCO.propertyFor
+        property1.floorNo=homeCO.floorNo
+//        property1.insert(true)
+        property1.save(failOnError: true)
+
+    }
+
+    def updateOffice(OfficeCO officeCO,MultipartFile file,int propertyID)
+    {
 
     }
 }

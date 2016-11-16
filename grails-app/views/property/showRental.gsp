@@ -5,7 +5,7 @@
   Time: 11:44 AM
 --%>
 
-<%@ page import="com.sample_application.myuser.MyUser" contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.sample_application.User" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="sample_application">
@@ -148,14 +148,14 @@
                                                 <h1>Location:${lt.address},${lt.city},${lt.pincode}</h1>
 
                                                 <h1>Contact:
-                                                    <g:user name="${lt.postedBy}">
+                                                    <myNamespace:user name="${lt.postedBy}">
                                                         (${it}
                                                         <sec:ifLoggedIn>
-                                                            ContactName:${MyUser.get(lt.postedBy.id).firstName}
-                                                            ContactNo.:${com.sample_application.myuser.MyUser.get(lt.postedBy.id).phoneNo}
+                                                            ContactName:${User.get(lt.postedBy.id).firstName}
+                                                            ContactNo.:${User.get(lt.postedBy.id).phoneNo}
                                                         </sec:ifLoggedIn>
 
-                                                    </g:user></h1>
+                                                    </myNamespace:user></h1>
 
 
                                                 <div class="aa-properties-detial">

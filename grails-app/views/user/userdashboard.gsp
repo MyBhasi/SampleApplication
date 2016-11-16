@@ -176,7 +176,11 @@
                                         <div class="form-group">
                                             <label>Only For Residential</label><g:select name="bedRoom"
                                                                                          from="${['1Bhk', '2Bhk', '3Bhk', '4Bhk']}"
-                                                                                         noSelection="['': 'BedRoom']"/>
+                                                                                         noSelection="['': 'BedRoom']"/><br>
+                                            <g:select name="Facing"
+                                                      from="${com.Facing.Facing.list()}"
+                                                      noSelection="['': 'Facing']"/>
+
 
                                         </div></div>
 
@@ -215,7 +219,9 @@
 
                     </div>
 
-                </div></div></div>
+                </div>
+            </div>
+        %{--</div>--}%
 
     </div>
 
@@ -226,13 +232,13 @@
 
 
     %{--<div class="row">--}%
-    %{--<g:post  userID="${sec.loggedInUserInfo(field:'id')}">--}%
+        %{--<div class="col-sm-4">--}%
+    %{--<myNamespace:post  userID="${sec.loggedInUserInfo(field:'id')}"/>--}%
+            %{--</div>--}%
 
-    %{--</g:post>--}%
-        %{----}%
-<g:link  controller="property"  action="postedProperty"  ><h1>Posted Property</h1></g:link>
+%{--<g:link  controller="property"  action="postedProperty"  ><h1>Posted Property</h1></g:link>--}%
 
-    </div>
+    %{--</div>--}%
 
 </section>
 

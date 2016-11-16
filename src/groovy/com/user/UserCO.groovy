@@ -14,22 +14,27 @@ class UserCO {
     String phoneNo
     String role
     static constraints = {
-        importFrom MyUser
+        importFrom User
+
         role nullable: false, blank: false
-        phoneNo blank: false, validator: { val, obj ->
-            if (MyUser.findByPhoneNo(val)) {
-                return "userCO.property.phone.unique.error"
+        phoneNo nullable:false,maxSize: 10, minSize: 10, matches: "[0-9]+", validator: { val, obj ->
+            if (User.findByPhoneNo(val)) {
+                return "phone.unique.error"
             }
         }
-        password minSize: 8, maxSize: 15
+        password nullable: false , minSize: 8,validator: { val, obj ->
+            if (val?.equalsIgnoreCase(obj.firstName)) {
+                return "password.match.error"
+            }
+        }
         username validator: { val, obj ->
-            if (MyUser.findByUsername(val)) {
+            if (User.findByUsername(val)) {
                 return "UserCo.property.username.unique.error"
             }
         }
         confirmPassword validator: { val, obj ->
             if (!val?.equals(obj.password)) {
-                return "UserCo.property.confirmpassword.error"
+                return "UserCO.property.confirmpassword.error"
             } else {
                 true
             }

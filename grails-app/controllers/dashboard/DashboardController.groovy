@@ -25,7 +25,7 @@ class DashboardController {
     @Secured('IS_AUTHENTICATED_FULLY')
     def afterLogin() {
         println "afterLogin"
-        MyUser user = springSecurityService.currentUser
+        User user = springSecurityService.currentUser
         String m = user.authorities.authority.getAt(0)
         println user.admin
         if (!user.isAdmin()) {

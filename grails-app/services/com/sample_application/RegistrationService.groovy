@@ -15,7 +15,7 @@ class RegistrationService {
         println "service"
         String r = "ROLE_${userCO.role.toUpperCase()}"
 
-        User user = new MyUser(username: userCO.username, password: userCO.password, admin: false, firstName: userCO.firstName, lastName: userCO.lastName, phoneNo: userCO.phoneNo,).save(failOnError: true)
+        User user = new User(username: userCO.username, password: userCO.password, admin: false, firstName: userCO.firstName, lastName: userCO.lastName, phoneNo: userCO.phoneNo,).save(failOnError: true)
         Role role = Role.findOrSaveWhere(authority: r)
         UserRole.create(user, role, true)
 

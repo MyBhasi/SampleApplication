@@ -10,11 +10,12 @@ import grails.plugin.springsecurity.SpringSecurityService
 class Sample_ApplicationTagLib {
 
 
-    static defaultEncodeAs = [taglib: 'html']
+    static namespace = "myNamespace"
+//    static defaultEncodeAs = [taglib: 'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
 
     def user = { attr, body ->
-        MyUser user = attr.name
+        User user = attr.name
         println "heoo"
         def roles = user.authorities
         String s = roles.getAt(0)
@@ -30,10 +31,14 @@ class Sample_ApplicationTagLib {
     }
 
     def post = { attr, body ->
-        MyUser user = MyUser.get(attr.userID)
+       def a= attr.userID  as Long
+        println a
+        println a.class
+        User user = User.get(a)
         Set<Property> set = user.property
         println set
-        out << g.render(template: '/user/template1', model: [s: set, a: "bhaskar"])
+        out << render(template: '/user/template1', model: [set: set])
 
     }
+
 }

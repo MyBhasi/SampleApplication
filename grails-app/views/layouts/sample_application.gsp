@@ -5,7 +5,7 @@
   Time: 4:44 PM
 --%>
 
-<%@ page import="com.sample_application.myuser.MyUser" %>
+<%@ page import="com.sample_application.User" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -217,11 +217,14 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="${createLink(controller: "property", action: "postedProperty")}">PostedProperty</a>
+                    </li>
 
                     <sec:ifLoggedIn>
                         <li class="dropdown">
                             <a class="dropdown-toggle"
-                               data-toggle="dropdown">${com.sample_application.myuser.MyUser.get(sec.loggedInUserInfo(field: 'id')).firstName}<span
+                               data-toggle="dropdown">${User.get(sec.loggedInUserInfo(field: 'id')).firstName}<span
                                     class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="${createLink(controller: "user", action: "index")}">dashboard</a></li>

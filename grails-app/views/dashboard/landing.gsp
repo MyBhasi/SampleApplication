@@ -5,7 +5,7 @@
   Time: 2:32 PM
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.sample_application.User" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="sample_application">
@@ -197,6 +197,7 @@
                             </div>
                         </g:form>
 
+
                     </div>
 
                     <div class="row">
@@ -218,10 +219,10 @@
 
                                                             <h1>
 
-                                                                <g:ch val1="${list}" val2="${err}">
+                                                                <myNamespace:ch val1="${list}" val2="${err}">
                                                                     ${it}
 
-                                                                </g:ch></h1>
+                                                                </myNamespace:ch></h1>
 
                                                             <g:each in="${list}" var="lt">
 
@@ -248,13 +249,13 @@
                                                                         <h1>Location:${lt.address},${lt.city},${lt.pincode}</h1>
 
                                                                         <h1>Contact:
-                                                                            <g:user name="${lt.postedBy}">
+                                                                            <myNamespace:user name="${lt.postedBy}">
                                                                                 (${it}
                                                                                 <sec:ifLoggedIn>
-                                                                                    Contact:${com.sample_application.myuser.MyUser.get(lt.postedBy.id).phoneNo}
+                                                                                    Contact:${com.sample_application.User.get(lt.postedBy.id).phoneNo}
                                                                                 </sec:ifLoggedIn>
 
-                                                                            </g:user></h1>
+                                                                            </myNamespace:user></h1>
 
 
                                                                         <div class="aa-properties-detial">

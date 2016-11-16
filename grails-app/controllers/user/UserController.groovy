@@ -1,5 +1,6 @@
 package user
 
+import com.sample_application.User
 import com.sample_application.myuser.MyUser
 import com.sample_application.property.Property
 import grails.plugin.springsecurity.SpringSecurityService
@@ -12,9 +13,9 @@ class UserController {
     def index() {
 
         println "in  user controller"
-        MyUser user = springSecurityService.currentUser
+        User user = springSecurityService.currentUser
         Set<Property> set = user.property
-        render(view: "userdashboard", model: [set: set])
+        render(view: "dashboard", model: [set: set])
 
     }
 

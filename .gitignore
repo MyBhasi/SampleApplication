@@ -1,0 +1,10 @@
+out/production/linkshare
+/out/production/linkshare-grailsPlugins
+/test/unit/linkshare
+ /web-app/fonts/
+ /web-app/js/theme/
+/ web-app/images/theme
+/ web-app/fonts/
+/test/unit/person/
+test/unit/com/
+test/unit/linkshare/
